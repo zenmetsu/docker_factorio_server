@@ -1,3 +1,5 @@
+[![](https://badge.imagelayers.io/dtandersen/factorio:latest.svg)](https://imagelayers.io/?images=dtandersen/factorio:latest 'Get your own badge on imagelayers.io')
+
 What is Factorio?
 ===== 
 [Factorio](https://www.factorio.com) is a game in which you build and maintain factories.
