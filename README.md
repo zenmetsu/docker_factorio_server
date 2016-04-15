@@ -1,3 +1,7 @@
+# Supported tags and respective Dockerfile links
+
+* `0.12.30`, `latest` [(0.12.30/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/master/Dockerfile)
+
 [![](https://badge.imagelayers.io/dtandersen/factorio:latest.svg)](https://imagelayers.io/?images=dtandersen/factorio:latest 'Get your own badge on imagelayers.io')
 
 What is Factorio?
