@@ -1,14 +1,12 @@
 Factorio
 ===== 
-Factorio Server in docker
+A Docker image for the headless [Factorio](http://www.factorio.com) server.
 
 Current Version
 -----
 0.12.30
+
 ### What's new ?
-#### Factorio
-See [factorio's site](http://www.factorio.com)
-#### Docker image
 * Added possibility to add the no-auto-pause option
 * Added possibility to allow commands in game
 * Automatically takes latest save or autosave. when restarting the container.
