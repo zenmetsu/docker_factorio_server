@@ -1,4 +1,4 @@
-# Supported tags and respective Dockerfile links
+# Supported tags and respective `Dockerfile` links
 
 * `0.12.30`, `latest` [(0.12.30/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/master/Dockerfile)
 
