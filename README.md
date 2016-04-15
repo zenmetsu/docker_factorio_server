@@ -1,6 +1,12 @@
-Factorio
+What is Factorio?
 ===== 
-An Alpine based Docker image for the headless [Factorio](http://www.factorio.com) server.
+[Factorio](https://www.factorio.com) is a game in which you build and maintain factories.
+
+You will be mining resources, researching technologies, building infrastructure, automating production and fighting enemies. Use your imagination to design your factory, combine simple elements into ingenious structures, apply management skills to keep it working and finally protect it from the creatures who don't really like you.
+
+The game is very stable and optimized for building massive factories. You can create your own maps, write mods in Lua or play with friends via Multiplayer.
+
+NOTE: This is only the server. The game is available on [Steam](http://store.steampowered.com/app/427520/).
 
 Current Version
 -----
@@ -12,12 +18,13 @@ Current Version
 * Set autosave interval and number of saves.
 * Enable/disable the no-auto-pause option.
 * Enable/disable console commands in game.
+* Based on Alpine Linux.
 
 Versions
 -----
 If you need to use an older version, checkout out the different [tags](https://hub.docker.com/r/dtandersen/factorio/tags/).
 
-How to use ?
+How to use this image?
 -----
 ### I just want to play !
 This runs factorio with default settings, and your save will be kept :
