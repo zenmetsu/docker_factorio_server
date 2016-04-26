@@ -1,6 +1,7 @@
 # Supported tags and respective `Dockerfile` links
 
-* `0.12.30`, `latest` [(0.12.30/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/master/Dockerfile)
+* `0.12.31`, `latest` [(0.12.31/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/dt_develop/Dockerfile)
+* `0.12.30` [(0.12.30/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/dt_develop/Dockerfile)
 
 [![](https://badge.imagelayers.io/dtandersen/factorio:latest.svg)](https://imagelayers.io/?images=dtandersen/factorio:latest 'Get your own badge on imagelayers.io')
 
