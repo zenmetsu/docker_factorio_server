@@ -19,18 +19,18 @@ NOTE: This is only the server. The game is available on [Steam](http://store.ste
 
 # Features
 
-* Automatically takes latest save or autosave when restarting the container.
-* Volumes for saves and mods
-* Set autosave interval and number of saves.
-* Enable/disable the no-auto-pause option.
-* Enable/disable console commands in game.
-* Based on Alpine Linux.
+* Configurable via ```server-config.json```.
+* Automatically loads the last save.
+* Volumes for saves and mods.
+* Small size. Based on Alpine Linux.
 
 # How to use this image?
 
 ## Quick Start
 
-Create ```server-config.json``` and modify it to your liking. Now run:
+Create ```server-config.json``` and modify it to your liking.
+
+Now start the server:
 
 ```
 docker run -d -P \
@@ -41,22 +41,46 @@ docker run -d -P \
   dtandersen/factorio
 ```
 
-```-d``` starts the server as a daemon. ```-P``` exposes all ports. The ```-v``` options mount volumes on the local file system to the container for config, mods, and saves. ```dtandersen/factorio``` is the docker images name. ```--name``` gives the container a name instead of a random name.
+If you're wondering what all these options are:
 
-The server should start and create ```/path/to/saves/save.zip```. This save is used when the server is restarted.
+* ```-d``` - Start the server as a daemon. 
+* ```-P``` - Expose all ports. 
+* ```-v``` - Mount volumes for config, mods, and saves. 
+* ```--name``` - Give the container a name (otherwise it'll be random).
+* ```dtandersen/factorio``` - The Docker image name. 
+
+The server should start and create ```/path/to/saves/save.zip```. The save remains if the server stops, since the save folder is mounted as a volume.
+
+## Stopping the Server
+
+Assuming the server is named ```factorio```, run:
+
+```
+docker stop factorio
+```
+
+## Saves
+
+If there are no saves when the server starts, then a new map is generated and saved as ```save.zip```.
+
+Otherwise, the most recent ZIP file in the saves folder is used. To load an old save ```touch save.zip``` and restart the server.
+
+## Mods
+
+Copy them into the mods folder.
 
 ## Volumes
 
-* /opt/factorio/saves - save files
-* /opt/factorio/mods - save files
-* /opt/factorio/data/server-config.json - config file
+* ```/opt/factorio/saves``` - Saves (recommened)
+* ```/opt/factorio/mods``` - Mods (optional)
+* ```/opt/factorio/data/server-config.json``` - Configuration (recommended)
 
 ## Ports
 
-* 34197/udp - game data
-* 27015/tcp - rcon
+* ```34197/udp``` - Client (required)
+* ```27015/tcp``` - Remote console (optional)
 
-### Logs
+## Logs
 
 Sometimes it's useful to see the logs of a running container:
 
