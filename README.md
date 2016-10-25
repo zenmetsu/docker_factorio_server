@@ -28,9 +28,21 @@ NOTE: This is only the server. The game is available on [Steam](http://store.ste
 
 ## Quick Start
 
-Create ```server-config.json``` and modify it to your liking.
+Start the server in interactive mode for debugging. The game isn't saved.
 
-Now start the server:
+```
+docker run --rm -it -P dtandersen/factorio
+```
+
+* ```--rm``` - Remove container after stopping
+* ```-it``` - Interactive mode, i.e. you can see the console
+* ```-P``` - Expose all ports.
+
+## Usage
+
+Normally the server runs as a daemon and a configuration file is specified. Volumes are mounted for saves and mods.
+
+Create ```server-config.json``` and modify it to your liking.
 
 ```
 docker run -d -P \
@@ -41,33 +53,32 @@ docker run -d -P \
   dtandersen/factorio
 ```
 
-If you're wondering what all these options are:
-
 * ```-d``` - Start the server as a daemon.
 * ```-P``` - Expose all ports.
 * ```-v``` - Mount volumes for config, mods, and saves.
 * ```--name``` - Give the container a name (otherwise it'll be random).
-* ```dtandersen/factorio``` - The Docker image name.
 
-The server should start and create ```/path/to/saves/save.zip```. The save remains if the server stops, since the save folder is mounted as a volume.
+## Saves
 
-## Stopping the Server
+The first time the server is started a new map is generated and saved as ```save.zip```. On subsequent runs the newest save is used. To load an old save ```touch save.zip``` and restart the server.
 
-Assuming the server is named ```factorio```, run:
+## Mods
+
+Copy them into the mods folder and restart the server.
+
+## Start/Stopping
+
+Assuming the server is named ```factorio```, to stop the server:
 
 ```
 docker stop factorio
 ```
 
-## Saves
+To restart the server:
 
-If there are no saves when the server starts, then a new map is generated and saved as ```save.zip```.
-
-Otherwise, the most recent ZIP file in the saves folder is used. To load an old save ```touch save.zip``` and restart the server.
-
-## Mods
-
-Copy them into the mods folder.
+```
+docker start factorio
+```
 
 ## Volumes
 
