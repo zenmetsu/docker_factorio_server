@@ -17,9 +17,8 @@ RUN apk --update add bash curl && \
 
 VOLUME /opt/factorio/saves /opt/factorio/mods
 
-COPY ./smart_launch.sh /opt
-
 EXPOSE 34197/udp 27015/tcp
 
-CMD ["/opt/smart_launch.sh"]
+COPY ./docker-entrypoint.sh /
 
+CMD ["/docker-entrypoint.sh"]
