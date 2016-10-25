@@ -37,8 +37,11 @@ docker run -d -P \
   -v /path/to/server-config.json:/opt/factorio/data/server-config.json \
   -v /path/to/saves:/opt/factorio/saves \
   -v /path/to/mods:/opt/factorio/mods \
+  --name factorio
   dtandersen/factorio
 ```
+
+```-d``` starts the server as a daemon. ```-P``` exposes all ports. The ```-v``` options mount volumes on the local file system to the container for config, mods, and saves. ```dtandersen/factorio``` is the docker images name. ```--name``` gives the container a name instead of a random name.
 
 The server should start and create ```/path/to/saves/save.zip```. This save is used when the server is restarted.
 
@@ -58,7 +61,7 @@ The server should start and create ```/path/to/saves/save.zip```. This save is u
 Sometimes it's useful to see the logs of a running container:
 
 ```
-docker exec -it [CONTAINER] tail -f /opt/factorio/factorio-current.log
+docker exec -it factorio tail -f /opt/factorio/factorio-current.log
 ```
 
 # Credits
