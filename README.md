@@ -37,17 +37,17 @@ docker run -d -P \
   -v /path/to/server-config.json:/opt/factorio/data/server-config.json \
   -v /path/to/saves:/opt/factorio/saves \
   -v /path/to/mods:/opt/factorio/mods \
-  --name factorio
+  --name factorio \
   dtandersen/factorio
 ```
 
 If you're wondering what all these options are:
 
-* ```-d``` - Start the server as a daemon. 
-* ```-P``` - Expose all ports. 
-* ```-v``` - Mount volumes for config, mods, and saves. 
+* ```-d``` - Start the server as a daemon.
+* ```-P``` - Expose all ports.
+* ```-v``` - Mount volumes for config, mods, and saves.
 * ```--name``` - Give the container a name (otherwise it'll be random).
-* ```dtandersen/factorio``` - The Docker image name. 
+* ```dtandersen/factorio``` - The Docker image name.
 
 The server should start and create ```/path/to/saves/save.zip```. The save remains if the server stops, since the save folder is mounted as a volume.
 
