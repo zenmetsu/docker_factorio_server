@@ -7,4 +7,4 @@ then
   /opt/factorio/bin/x64/factorio --create $SAVES/save.zip
 fi
 
-/opt/factorio/bin/x64/factorio --start-server-load-latest
+exec /opt/factorio/bin/x64/factorio --start-server-load-latest
