@@ -1,5 +1,6 @@
 # Supported tags and respective `Dockerfile` links
 
+* `0.14.14` [(0.14.14/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/0.14.14/Dockerfile)
 * `0.12.32`, `latest` [(0.12.32/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/dt_0.12.32/Dockerfile)
 * `0.12.31` [(0.12.31/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/dt_0.12.31/Dockerfile)
 * `0.12.30` [(0.12.30/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/dt_0.12.30/Dockerfile)
@@ -29,113 +30,28 @@ NOTE: This is only the server. The game is available on [Steam](http://store.ste
 
 ## Quick Start
 
-This runs factorio with default settings, and your save will be kept:
+Create ```server-config.json``` and modify it to your liking. Now run:
 
 ```
-docker run -d \
-  -v [PATH]:/opt/factorio/saves \
-  -p [PORT]:34197/udp \
+docker run -d -P \
+  -v /path/to/server-config.json:/opt/factorio/data/server-config.json \
+  -v /path/to/saves:/opt/factorio/saves \
+  -v /path/to/mods:/opt/factorio/mods \
   dtandersen/factorio
 ```
 
-* Where [PATH] is a folder where you'll put your saves, if there already is a save in it with the string "save", that one will be taken by default, otherwize, a new one will be made.
-* Where [PORT] is the port number you choose, if you're going to launch it on your local machine, don't use the port 34197, take another one at random.
+The server should start and create ```/path/to/saves/save.zip```. This save is used when the server is restarted.
 
-## Advanced usage
+## Volumes
 
-### Without map persistence
+* /opt/factorio/saves - save files
+* /opt/factorio/mods - save files
+* /opt/factorio/data/server-config.json - config file
 
-This will generate a new random map with default settings.
+## Ports
 
-```
-docker run -d \
-  -p [PORT]:34197/udp \
-  dtandersen/factorio
-```
-
-### With map persistence
-
-This will generate a new random map with default settings and save it onto the volume.
-Replace [PATH] with a path to a folder on the host where the map will be saved.
-
-```
-docker run -d \
-  -v [PATH]:/opt/factorio/saves \
-  -p [PORT]:34197/udp \
-  dtandersen/factorio
-```
-
-### With existing map
-
-It's the same as above, it takes the last modified file which contains the word save in the filename as current save when booting the server. This allows when upgrading the container to take the last save, you don't have to rename the last autosave as save.zip
-
-```
-docker run -d \
-  -v [PATH]:/opt/factorio/saves \
-  -p [PORT]:34197/udp \
-  dtandersen/factorio
-```
-
-### Autosave interval
-
-You can set the autosave interval. By default it is set at 2 minutes bud you can change it by launching the container with the `FACTORIO_AUTOSAVE_INTERVAL` variable to whatever suits you best.
-
-```
-docker run -d \
-  --env FACTORIO_AUTOSAVE_INTERVAL=[NUMBER] \
-  -p [PORT]:34197/udp  \
-  dtandersen/factorio
-```
-
-Where [NUMBER] is the number of minutes between autosaves. 
-
-### Autosave slots
-
-You can set the number of autosave slots. By default it is set at 3 slots bud you can change it by launching the container with the `FACTORIO_AUTOSAVE_SLOTS` variable to whatever suits you best.
-
-```
-docker run -d \
-  --env FACTORIO_AUTOSAVE_SLOTS=[NUMBER] \
-  -p [PORT]:34197/udp  \
-  dtandersen/factorio
-```
-
-Where [NUMBER] is the number of autosave slots.  
-
-### Mounting mod volume
-
-As everybody knows about factorio is you can add mods to it. Now you can also do it in this docker image by mounting a volume.
-
-```
-docker run -d \
-  -v [PATH]:/opt/factorio/mods \
-  -p [PORT]:34197/udp \
-  dtandersen/factorio
-```
-
-Where [PATH] is the path to the folder with your mods.
-
-### Allowing in-game commands
-
-I've always disabled in-game commands because I think it is like cheating, however, you can enable them by setting the the `FACTORIO_DISSALOW_COMMANDS` variable to "false".
-
-```
-docker run -d \
-  --env FACTORIO_DISSALOW_COMMANDS=false \
-  -p [PORT]:34197/udp \
-  dtandersen/factorio
-```
-
-### Activating no-auto-pause in the game when no one is on the server
-
-I do not recommend this feature, bud it can make the game more difficult if you're up for a challenge :-). Just set the `FACTORIO_NO_AUTO_PAUSE` variable to "true".
-
-```
-docker run -d \
-  --env FACTORIO_NO_AUTO_PAUSE=true \
-  -p [PORT]:34197/udp \
-  dtandersen/factorio
-```
+* 34197/udp - game data
+* 27015/tcp - rcon
 
 ### Logs
 
