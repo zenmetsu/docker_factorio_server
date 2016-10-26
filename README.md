@@ -80,16 +80,16 @@ Copy the mods into the mods folder and restart the server.
 The server has only one volume: ```/factorio```. Under this folder there are folders for ```/saves```, ```/mods```, and ```/config```.
 
 * ```/factorio```
-** ```/config```
-*** ```server-settings.json```
-*** ```map-gen-settings.json```
-** ```/mods```
-** ```/saves```
+  ** ```/config```
+    *** ```server-settings.json```
+    *** ```map-gen-settings.json```
+  ** ```/mods```
+  ** ```/saves```
 
 ## Ports
 
-* ```34197/udp``` - Client (required)
-* ```27015/tcp``` - Remote console (optional)
+* ```34197/udp``` - Factorio clients (required).
+* ```27015/tcp``` - RCON (optional).
 
 # Credits
 
