@@ -1,6 +1,5 @@
 {
-  "_comment": "Sizes can be specified as none, very-low, low, normal, 
-high, very-high",
+  "_comment": "Sizes can be specified as none, very-low, low, normal, high, very-high",
   "terrain_segmentation": "normal",
   "water": "normal",
   "width": 0,
@@ -10,15 +9,10 @@ high, very-high",
   "autoplace_controls":
   {
     "coal": {"frequency": "very-low", "size": "high", "richness": "high"},
-    "copper-ore": {"frequency": "very-low", "size": "high", "richness": 
-"high"},
-    "crude-oil": {"frequency": "normal", "size": "high", "richness": 
-"high"},
-    "enemy-base": {"frequency": "low", "size": "normal", "richness": 
-"normal"},
-    "iron-ore": {"frequency": "very-low", "size": "high", "richness": 
-"high"},
-    "stone": {"frequency": "very-low", "size": "normal", "richness": 
-"normal"}
+    "copper-ore": {"frequency": "very-low", "size": "high", "richness": "high"},
+    "crude-oil": {"frequency": "normal", "size": "high", "richness": "high"},
+    "enemy-base": {"frequency": "low", "size": "normal", "richness": "normal"},
+    "iron-ore": {"frequency": "very-low", "size": "high", "richness": "high"},
+    "stone": {"frequency": "very-low", "size": "normal", "richness": "normal"}
   }
 }
