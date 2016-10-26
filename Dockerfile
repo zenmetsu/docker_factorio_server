@@ -7,7 +7,7 @@ COPY ./factorio.crt /opt/factorio.crt
 ENV VERSION=0.14.16 \
     SHA1=e27c658bf8a7579b662a1c34815daa223e57bc90
 
-RUN apk --update add bash curl && \
+RUN apk --update --no-cache add bash curl && \
     curl -sSL --cacert /opt/factorio.crt \
         https://www.factorio.com/get-download/$VERSION/headless/linux64 \
         -o /tmp/factorio_headless_x64_$VERSION.tar.gz && \
@@ -15,7 +15,8 @@ RUN apk --update add bash curl && \
     tar xzf /tmp/factorio_headless_x64_$VERSION.tar.gz --directory /opt && \
     rm /tmp/factorio_headless_x64_$VERSION.tar.gz && \
     cp /opt/factorio/data/server-settings.example.json /opt/factorio/data/server-settings.json && \
-    cp /opt/factorio/data/map-gen-settings.example.json /opt/factorio/data/map-gen-settings.json
+    cp /opt/factorio/data/map-gen-settings.example.json /opt/factorio/data/map-gen-settings.json && \
+    apk --no-cache del curl
 
 VOLUME /opt/factorio/saves /opt/factorio/mods
 
