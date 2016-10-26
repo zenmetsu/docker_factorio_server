@@ -30,43 +30,44 @@ NOTE: This is only the server. The game is available on [Steam](http://store.ste
 
 ## Quick Start
 
-Start the server in interactive mode for debugging. The game isn't saved.
+Start the server in interactive mode.
 
 ```
-docker run --rm -it -P dtandersen/factorio
+docker run --rm -it -P -v /tmp/factorio:/factorio dtandersen/factorio
 ```
+
+Here is an explanation of the options:
 
 * ```--rm``` - Remove container after stopping
 * ```-it``` - Interactive mode, i.e. you can see the console
 * ```-P``` - Expose all ports.
+* ```-v``` - Volume to mount.
 
-## Usage
+Press ^C to stop the server. There is now a ```server-settings.json``` in ```/tmp/factorio/config```. Modify this to your liking.
 
-Normally the server runs as a daemon and a configuration file is specified. Volumes are mounted for saves and mods.
-
-Create ```server-config.json``` and modify it to your liking.
+Now start the server as a daemon.
 
 ```
-docker run -d -P \
-  -v /path/to/server-config.json:/opt/factorio/data/server-config.json \
-  -v /path/to/saves:/opt/factorio/saves \
-  -v /path/to/mods:/opt/factorio/mods \
-  --name factorio \
-  dtandersen/factorio
+docker run -d -P -v /tmp/factorio:/factorio --name factorio dtandersen/factorio
 ```
 
-* ```-d``` - Start the server as a daemon.
-* ```-P``` - Expose all ports.
-* ```-v``` - Mount volumes for config, mods, and saves.
-* ```--name``` - Give the container a name (otherwise it'll be random).
+Try to connect to the server. Check the logs if it isn't working:
+
+```
+docker logs factorio
+```
 
 ## Saves
 
-The first time the server is started a new map is generated and saved as ```save.zip```. On subsequent runs the newest save is used. To load an old save ```touch save.zip``` and restart the server.
+A new map (```save.zip```) is generated the first time the server is started. On subsequent runs the newest save is used. To load an old save ```touch save.zip``` and restart the server.
+
+To generate a new map delete all of the saves and restart the server.
+
+For custom map settings edit ```map-gen-settings.json``` in ```/tmp/factorio/config```.
 
 ## Mods
 
-Copy them into the mods folder and restart the server.
+Copy the mods into the mods folder and restart the server.
 
 ## Start/Stopping
 
@@ -84,22 +85,19 @@ docker start factorio
 
 ## Volumes
 
-* ```/opt/factorio/saves``` - Saves (recommened)
-* ```/opt/factorio/mods``` - Mods (optional)
-* ```/opt/factorio/data/server-config.json``` - Configuration (recommended)
+The server has only one volume: ```/factorio```. Under this folder there are folders for ```/saves```, ```/mods```, and ```/config```.
+
+* ```/factorio```
+** ```/config```
+*** ```server-settings.json```
+*** ```map-gen-settings.json```
+** ```/mods```
+** ```/saves```
 
 ## Ports
 
 * ```34197/udp``` - Client (required)
 * ```27015/tcp``` - Remote console (optional)
-
-## Logs
-
-Sometimes it's useful to see the logs of a running container:
-
-```
-docker logs factorio
-```
 
 # Credits
 
