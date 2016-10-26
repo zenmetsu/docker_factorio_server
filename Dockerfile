@@ -14,11 +14,13 @@ RUN apk --update --no-cache add bash curl && \
     echo "$SHA1  /tmp/factorio_headless_x64_$VERSION.tar.gz" | sha1sum -c && \
     tar xzf /tmp/factorio_headless_x64_$VERSION.tar.gz --directory /opt && \
     rm /tmp/factorio_headless_x64_$VERSION.tar.gz && \
-    cp /opt/factorio/data/server-settings.example.json /opt/factorio/data/server-settings.json && \
-    cp /opt/factorio/data/map-gen-settings.example.json /opt/factorio/data/map-gen-settings.json && \
-    apk --no-cache del curl
+    apk --no-cache del curl && \
+    ln -s /factorio/saves /opt/factorio/saves && \
+    ln -s /factorio/mods /opt/factorio/mods && \
+    ln -s /factorio/config/server-settings.json /opt/factorio/data/server-settings.json && \
+    ln -s /factorio/config/map-gen-settings.json /opt/factorio/data/map-gen-settings.json
 
-VOLUME /opt/factorio/saves /opt/factorio/mods
+VOLUME /factorio
 
 EXPOSE 34197/udp 27015/tcp
 
