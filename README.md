@@ -30,32 +30,36 @@ NOTE: This is only the server. The game is available on [Steam](http://store.ste
 
 ## Quick Start
 
-Start the server in interactive mode.
-
-```
-docker run --rm -it -P -v /tmp/factorio:/factorio dtandersen/factorio
-```
-
-Here is an explanation of the options:
-
-* ```--rm``` - Remove container after stopping
-* ```-it``` - Interactive mode, i.e. you can see the console
-* ```-P``` - Expose all ports.
-* ```-v``` - Volume to mount.
-
-Press ^C to stop the server. There is now a ```server-settings.json``` in ```/tmp/factorio/config```. Modify this to your liking.
-
-Now start the server as a daemon.
+Begin by running the server to create the necessary folder structure and configuration files under ```/tmp/factorio```.
 
 ```
 docker run -d -P -v /tmp/factorio:/factorio --name factorio dtandersen/factorio
 ```
 
-Try to connect to the server. Check the logs if it isn't working:
+Here is an explanation of the options:
+
+* ```--d``` - Run as a daemon (detached).
+* ```-P``` - Expose all ports.
+* ```-v``` - Mount ```/tmp/factorio``` on the local file system to ```/factorio``` in the container.
+* ```--name``` - Name the container ```factorio``` (otherwise it has a random name).
+
+Check the logs to see what happened:
 
 ```
 docker logs factorio
 ```
+
+Stop the server:
+
+```docker stop factorio```
+
+Now there's a ```server-settings.json``` in ```/tmp/factorio/config```. Modify this to your liking.
+
+Restart the server:
+
+```docker start factorio```
+
+Try to connect to the server. Check the logs if it isn't working.
 
 ## Saves
 
@@ -68,20 +72,6 @@ For custom map settings edit ```map-gen-settings.json``` in ```/tmp/factorio/con
 ## Mods
 
 Copy the mods into the mods folder and restart the server.
-
-## Start/Stopping
-
-Assuming the server is named ```factorio```, to stop the server:
-
-```
-docker stop factorio
-```
-
-To restart the server:
-
-```
-docker start factorio
-```
 
 ## Volumes
 
