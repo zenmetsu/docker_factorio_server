@@ -19,14 +19,7 @@ The game is very stable and optimized for building massive factories. You can cr
 
 NOTE: This is only the server. The game is available on [Steam](http://store.steampowered.com/app/427520/).
 
-# Features
-
-* Configurable via ```server-config.json```.
-* Automatically loads the last save.
-* Volumes for saves and mods.
-* Small size. Based on Alpine Linux.
-
-# How to use this image?
+# Usage
 
 ## Quick Start
 
@@ -75,9 +68,11 @@ For custom map settings edit ```map-gen-settings.json``` in ```/tmp/factorio/con
 
 Copy the mods into the mods folder and restart the server.
 
+# Container Details
+
 ## Volumes
 
-The server has only one volume: ```/factorio```. Under this folder there are folders for ```/saves```, ```/mods```, and ```/config```.
+The container has one volume located at ```/factorio```. Under this folder there are sub-folders for configuration, mods, and saves.
 
 * ```/factorio```
   * ```/config```
