@@ -30,7 +30,7 @@ NOTE: This is only the server. The game is available on [Steam](http://store.ste
 
 ## Quick Start
 
-Begin by running the server to create the necessary folder structure and configuration files under ```/tmp/factorio```.
+Begin by running the server to create the necessary folder structure and configuration files. For this example we'll use ```/tmp/factorio``` to store our data.
 
 ```
 docker run -d -P -v /tmp/factorio:/factorio --name factorio dtandersen/factorio
@@ -53,7 +53,7 @@ Stop the server:
 
 ```docker stop factorio```
 
-Now there's a ```server-settings.json``` in ```/tmp/factorio/config```. Modify this to your liking.
+Now there's a ```server-settings.json``` file in the folder ```/tmp/factorio/config```. Modify this to your liking.
 
 Restart the server:
 
@@ -63,11 +63,13 @@ Try to connect to the server. Check the logs if it isn't working.
 
 ## Saves
 
-A new map (```save.zip```) is generated the first time the server is started. On subsequent runs the newest save is used. To load an old save ```touch save.zip``` and restart the server.
+A new map (```save.zip```) is generated the first time the server is started. On subsequent runs the newest save is used. 
+
+To load an old save ```touch save.zip``` and restart the server.
 
 To generate a new map delete all of the saves and restart the server.
 
-For custom map settings edit ```map-gen-settings.json``` in ```/tmp/factorio/config```.
+For custom map settings edit ```map-gen-settings.json``` in ```/tmp/factorio/config```. Then generate a new map.
 
 ## Mods
 
