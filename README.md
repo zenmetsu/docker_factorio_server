@@ -98,7 +98,7 @@ docker start factorio
 Sometimes it's useful to see the logs of a running container:
 
 ```
-docker exec -it factorio tail -f /opt/factorio/factorio-current.log
+docker logs factorio
 ```
 
 # Credits
