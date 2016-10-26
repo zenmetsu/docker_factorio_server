@@ -13,7 +13,9 @@ RUN apk --update add bash curl && \
         -o /tmp/factorio_headless_x64_$VERSION.tar.gz && \
     echo "$SHA1  /tmp/factorio_headless_x64_$VERSION.tar.gz" | sha1sum -c && \
     tar xzf /tmp/factorio_headless_x64_$VERSION.tar.gz --directory /opt && \
-    rm /tmp/factorio_headless_x64_$VERSION.tar.gz
+    rm /tmp/factorio_headless_x64_$VERSION.tar.gz && \
+    cp /opt/factorio/data/server-settings.example.json /opt/factorio/data/server-settings.json && \
+    cp /opt/factorio/data/map-gen-settings.example.json /opt/factorio/data/map-gen-settings.json
 
 VOLUME /opt/factorio/saves /opt/factorio/mods
 
