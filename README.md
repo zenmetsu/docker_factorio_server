@@ -80,11 +80,11 @@ Copy the mods into the mods folder and restart the server.
 The server has only one volume: ```/factorio```. Under this folder there are folders for ```/saves```, ```/mods```, and ```/config```.
 
 * ```/factorio```
-  ** ```/config```
-    *** ```server-settings.json```
-    *** ```map-gen-settings.json```
-  ** ```/mods```
-  ** ```/saves```
+  * ```/config```
+    * ```server-settings.json```
+    * ```map-gen-settings.json```
+  * ```/mods```
+  * ```/saves```
 
 ## Ports
 
