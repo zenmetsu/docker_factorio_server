@@ -1,4 +1,4 @@
-![Docker Hub Pulls](https://img.shields.io/docker/pulls/dtandersen/factorio.svg) ![Docker Hub Stars](https://img.shields.io/docker/stars/dtandersen/factorio.svg)
+[![Docker Pulls](https://img.shields.io/docker/pulls/dtandersen/factorio.svg)](https://hub.docker.com/r/dtandersen/factorio/) [![Docker Stars](https://img.shields.io/docker/stars/dtandersen/factorio.svg)](https://hub.docker.com/r/dtandersen/factorio/)
 
 # Versions
 
