@@ -1,8 +1,9 @@
-![Stars](https://img.shields.io/docker/stars/dtandersen/factorio.svg) ![Pulls](https://img.shields.io/docker/pulls/dtandersen/factorio.svg)
+![Docker Hub Pulls](https://img.shields.io/docker/pulls/dtandersen/factorio.svg) ![Docker Hub Stars](https://img.shields.io/docker/stars/dtandersen/factorio.svg)
 
 # Versions
 
 * `0.14.16`, `latest` [(0.14.16/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/0.14.16/Dockerfile)
+
 
 # What is Factorio?
 
@@ -14,22 +15,23 @@ The game is very stable and optimized for building massive factories. You can cr
 
 NOTE: This is only the server. The game is available on [factorio.com](https://www.factorio.com) or [Steam](http://store.steampowered.com/app/427520/).
 
+
 # Usage
 
 ## Quick Start
 
-Begin by running the server to create the necessary folder structure and configuration files. For this example we'll use ```/tmp/factorio``` to store our data.
+Run the server to create the necessary folder structure and configuration files. For this example data is stored in `/tmp/factorio`.
 
 ```
 docker run -d -P -v /tmp/factorio:/factorio --name factorio dtandersen/factorio
 ```
 
-Here is an explanation of the options:
+For those new to Docker, here is an explanation of the options:
 
-* ```--d``` - Run as a daemon (detached).
-* ```-P``` - Expose all ports.
-* ```-v``` - Mount ```/tmp/factorio``` on the local file system to ```/factorio``` in the container.
-* ```--name``` - Name the container ```factorio``` (otherwise it has a random name).
+* `-d` - Run as a daemon ("detached").
+* `-P` - Expose all ports.
+* `-v` - Mount `/tmp/factorio` on the local file system to `/factorio` in the container.
+* `--name` - Name the container `factorio` (otherwise it has a funny random name).
 
 Check the logs to see what happened:
 
@@ -43,9 +45,7 @@ Stop the server:
 docker stop factorio
 ```
 
-Now there's a ```server-settings.json``` file in the folder ```/tmp/factorio/config```. Modify this to your liking.
-
-Restart the server:
+Now there's a `server-settings.json` file in the folder `/tmp/factorio/config`. Modify this to your liking and restart the server:
 
 ```
 docker start factorio
@@ -53,38 +53,51 @@ docker start factorio
 
 Try to connect to the server. Check the logs if it isn't working.
 
+
 ## Saves
 
-A new map (```save.zip```) is generated the first time the server is started. On subsequent runs the newest save is used. 
+A new map named `save.zip` is generated the first time the server is started. On subsequent runs the newest save is used.
 
-To load an old save ```touch save.zip``` and restart the server.
+To load an old save run the command `touch oldsave.zip`. This resets the date. Then restart the server.
 
 To generate a new map delete all of the saves and restart the server.
 
-For custom map settings edit ```map-gen-settings.json``` in ```/tmp/factorio/config```. Then generate a new map.
+For custom map settings edit `map-gen-settings.json` in `/tmp/factorio/config`. Then generate a new map.
+
 
 ## Mods
 
 Copy the mods into the mods folder and restart the server.
 
+
+## Remote Console
+
+RCON is currently disabled.
+
+
 # Container Details
 
 ## Volumes
 
-The container has one volume located at ```/factorio```. Under this folder there are sub-folders for configuration, mods, and saves.
+To keep things simple, the container uses a single volume. The `/factorio` volume stores configuration, mods, and saves.
 
-* ```/factorio```
-  * ```/config```
-    * ```server-settings.json```
-    * ```map-gen-settings.json```
-  * ```/mods```
-  * ```/saves```
+    factorio
+    |-- config
+    |   |-- server-settings.json
+    |   +-- map-gen-settings.json
+    |-- mods
+    +-- saves
+
 
 ## Ports
 
-* ```34197/udp``` - Factorio clients (required).
-* ```27015/tcp``` - RCON (optional).
+* `34197/udp` - Factorio clients (required).
+* `27015/tcp` - RCON (optional).
+
 
 # Credits
 
-Based on [Zopanix' Factorio Server](https://github.com/zopanix/docker_factorio_server).
+Ideas borrowed from:
+
+* [Zopanix](https://github.com/zopanix/docker_factorio_server)
+* [Rfvgyhn](https://github.com/Rfvgyhn/docker-factorio)
