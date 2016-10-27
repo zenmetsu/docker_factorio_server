@@ -1,6 +1,7 @@
 # Factorio [![Docker Pulls](https://img.shields.io/docker/pulls/dtandersen/factorio.svg)](https://hub.docker.com/r/dtandersen/factorio/) [![Docker Stars](https://img.shields.io/docker/stars/dtandersen/factorio.svg)](https://hub.docker.com/r/dtandersen/factorio/)
 
-* `0.14.16`, `0.14`, `latest` [(0.14.16/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/0.14.16/Dockerfile)
+* `0.14.17`, `0.14`, `latest` [(0.14.17/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/0.14.17/Dockerfile)
+* `0.14.16` [(0.14.16/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/0.14.16/Dockerfile)
 
 
 # What is Factorio?
