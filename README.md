@@ -11,7 +11,7 @@ You will be mining resources, researching technologies, building infrastructure,
 
 The game is very stable and optimized for building massive factories. You can create your own maps, write mods in Lua or play with friends via Multiplayer.
 
-NOTE: This is only the server. The game is available on [factorio.com](https://www.factorio.com) or [Steam](http://store.steampowered.com/app/427520/).
+NOTE: This is only the server. The game is available at [factorio.com](https://www.factorio.com) and [Steam](http://store.steampowered.com/app/427520/).
 
 
 # Usage
@@ -73,16 +73,26 @@ RCON is currently disabled.
 
 # Container Details
 
+The philosophy is to keep things simple.
+
+* Prefer configuration files over environment variables.
+* The container should work in a basic way without external configuration.
+* Use one volume for data.
+
+
 ## Volumes
 
-To keep things simple, the container uses a single volume. The `/factorio` volume stores configuration, mods, and saves.
+To keep things simple, the container uses a single volume mounted at `/factorio`. This volume stores configuration, mods, and saves.
 
     factorio
     |-- config
     |   |-- server-settings.json
     |   +-- map-gen-settings.json
     |-- mods
+    |   +-- fancymod.zip
     +-- saves
+        |-- _autosave1.zip
+        +-- save.zip
 
 
 ## Ports
