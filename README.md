@@ -93,6 +93,13 @@ To keep things simple, the container uses a single volume. The `/factorio` volum
 * `27015/tcp` - RCON (optional).
 
 
+## Troubleshooting
+
+**Server is listed in the in-game server browser, but users can't connect**
+
+Run Docker with the `--userland-proxy=false` option. The source UDP port is changed by docker-proxy when the server pings "pingpong" servers. See [Incorrect port detected for docker hosted server](https://forums.factorio.com/viewtopic.php?f=49&t=35255).
+
+
 # Credits
 
 Ideas borrowed from:
