@@ -90,7 +90,7 @@ To keep things simple, the container uses a single volume mounted at `/factorio`
     |   |-- server-settings.json
     |   +-- map-gen-settings.json
     |-- mods
-    |   |-- fancymod.zip
+    |   +-- fancymod.zip
     +-- saves
         |-- _autosave1.zip
         +-- save.zip
