@@ -19,87 +19,72 @@ The game is very stable and optimized for building massive factories. You can cr
 
 NOTE: This is only the server. The game is available on [Steam](http://store.steampowered.com/app/427520/).
 
-# Features
-
-* Configurable via ```server-config.json```.
-* Automatically loads the last save.
-* Volumes for saves and mods.
-* Small size. Based on Alpine Linux.
-
-# How to use this image?
+# Usage
 
 ## Quick Start
 
-Start the server in interactive mode for debugging. The game isn't saved.
+Begin by running the server to create the necessary folder structure and configuration files. For this example we'll use ```/tmp/factorio``` to store our data.
 
 ```
-docker run --rm -it -P dtandersen/factorio
+docker run -d -P -v /tmp/factorio:/factorio --name factorio dtandersen/factorio
 ```
 
-* ```--rm``` - Remove container after stopping
-* ```-it``` - Interactive mode, i.e. you can see the console
+Here is an explanation of the options:
+
+* ```--d``` - Run as a daemon (detached).
 * ```-P``` - Expose all ports.
+* ```-v``` - Mount ```/tmp/factorio``` on the local file system to ```/factorio``` in the container.
+* ```--name``` - Name the container ```factorio``` (otherwise it has a random name).
 
-## Usage
-
-Normally the server runs as a daemon and a configuration file is specified. Volumes are mounted for saves and mods.
-
-Create ```server-config.json``` and modify it to your liking.
-
-```
-docker run -d -P \
-  -v /path/to/server-config.json:/opt/factorio/data/server-config.json \
-  -v /path/to/saves:/opt/factorio/saves \
-  -v /path/to/mods:/opt/factorio/mods \
-  --name factorio \
-  dtandersen/factorio
-```
-
-* ```-d``` - Start the server as a daemon.
-* ```-P``` - Expose all ports.
-* ```-v``` - Mount volumes for config, mods, and saves.
-* ```--name``` - Give the container a name (otherwise it'll be random).
-
-## Saves
-
-The first time the server is started a new map is generated and saved as ```save.zip```. On subsequent runs the newest save is used. To load an old save ```touch save.zip``` and restart the server.
-
-## Mods
-
-Copy them into the mods folder and restart the server.
-
-## Start/Stopping
-
-Assuming the server is named ```factorio```, to stop the server:
-
-```
-docker stop factorio
-```
-
-To restart the server:
-
-```
-docker start factorio
-```
-
-## Volumes
-
-* ```/opt/factorio/saves``` - Saves (recommened)
-* ```/opt/factorio/mods``` - Mods (optional)
-* ```/opt/factorio/data/server-config.json``` - Configuration (recommended)
-
-## Ports
-
-* ```34197/udp``` - Client (required)
-* ```27015/tcp``` - Remote console (optional)
-
-## Logs
-
-Sometimes it's useful to see the logs of a running container:
+Check the logs to see what happened:
 
 ```
 docker logs factorio
 ```
+
+Stop the server:
+
+```docker stop factorio```
+
+Now there's a ```server-settings.json``` file in the folder ```/tmp/factorio/config```. Modify this to your liking.
+
+Restart the server:
+
+```docker start factorio```
+
+Try to connect to the server. Check the logs if it isn't working.
+
+## Saves
+
+A new map (```save.zip```) is generated the first time the server is started. On subsequent runs the newest save is used. 
+
+To load an old save ```touch save.zip``` and restart the server.
+
+To generate a new map delete all of the saves and restart the server.
+
+For custom map settings edit ```map-gen-settings.json``` in ```/tmp/factorio/config```. Then generate a new map.
+
+## Mods
+
+Copy the mods into the mods folder and restart the server.
+
+# Container Details
+
+## Volumes
+
+The container has one volume located at ```/factorio```. Under this folder there are sub-folders for configuration, mods, and saves.
+
+* ```/factorio```
+  * ```/config```
+    * ```server-settings.json```
+    * ```map-gen-settings.json```
+  * ```/mods```
+  * ```/saves```
+
+## Ports
+
+* ```34197/udp``` - Factorio clients (required).
+* ```27015/tcp``` - RCON (optional).
 
 # Credits
 
