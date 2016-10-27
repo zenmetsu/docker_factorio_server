@@ -75,8 +75,8 @@ RCON is currently disabled.
 
 The philosophy is to keep things simple.
 
+* Self-configure to a minimal working state.
 * Prefer configuration files over environment variables.
-* The container should work in a basic way without external configuration.
 * Use one volume for data.
 
 
@@ -89,7 +89,7 @@ To keep things simple, the container uses a single volume mounted at `/factorio`
     |   |-- server-settings.json
     |   +-- map-gen-settings.json
     |-- mods
-    |   +-- fancymod.zip
+    |   |-- fancymod.zip
     +-- saves
         |-- _autosave1.zip
         +-- save.zip
