@@ -31,7 +31,7 @@ For those new to Docker, here is an explanation of the options:
 * `-d` - Run as a daemon ("detached").
 * `-P` - Expose all ports.
 * `-v` - Mount `/tmp/factorio` on the local file system to `/factorio` in the container.
-* `--name` - Name the container `factorio` (otherwise it has a funny random name).
+* `--name` - Name the container "factorio" (otherwise it has a funny random name).
 
 Check the logs to see what happened:
 
@@ -56,18 +56,16 @@ Try to connect to the server. Check the logs if it isn't working.
 
 ## Saves
 
-A new map named `save.zip` is generated the first time the server is started. On subsequent runs the newest save is used.
+A new map named `save.zip` is generated the first time the server is started. The `map-gen-settings.json` file in `/tmp/factorio/config` is used for the map settings. On subsequent runs the newest save is used.
 
-To load an old save run the command `touch oldsave.zip`. This resets the date. Then restart the server.
+To load an old save stop the server and run the command `touch oldsave.zip`. This resets the date. Then restart the server.
 
-To generate a new map delete all of the saves and restart the server.
-
-For custom map settings edit `map-gen-settings.json` in `/tmp/factorio/config`. Then generate a new map.
+To generate a new map stop the server, delete all of the saves and restart the server.
 
 
 ## Mods
 
-Copy the mods into the mods folder and restart the server.
+Copy mods into the mods folder and restart the server.
 
 
 ## Remote Console
