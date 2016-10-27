@@ -1,13 +1,8 @@
-![Stars](https://img.shields.io/docker/stars/dtandersen/factorio.svg)
-![Pulls](https://img.shields.io/docker/pulls/dtandersen/factorio.svg)
+![Stars](https://img.shields.io/docker/stars/dtandersen/factorio.svg) ![Pulls](https://img.shields.io/docker/pulls/dtandersen/factorio.svg)
 
-# Supported tags and respective `Dockerfile` links
+# Versions
 
 * `0.14.16`, `latest` [(0.14.16/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/0.14.16/Dockerfile)
-* `0.14.14` [(0.14.14/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/0.14.14/Dockerfile)
-* `0.12.32` [(0.12.32/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/dt_0.12.32/Dockerfile)
-* `0.12.31` [(0.12.31/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/dt_0.12.31/Dockerfile)
-* `0.12.30` [(0.12.30/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/dt_0.12.30/Dockerfile)
 
 # What is Factorio?
 
@@ -17,7 +12,7 @@ You will be mining resources, researching technologies, building infrastructure,
 
 The game is very stable and optimized for building massive factories. You can create your own maps, write mods in Lua or play with friends via Multiplayer.
 
-NOTE: This is only the server. The game is available on [Steam](http://store.steampowered.com/app/427520/).
+NOTE: This is only the server. The game is available on [factorio.com](https://www.factorio.com) or [Steam](http://store.steampowered.com/app/427520/).
 
 # Usage
 
@@ -44,13 +39,17 @@ docker logs factorio
 
 Stop the server:
 
-```docker stop factorio```
+```
+docker stop factorio
+```
 
 Now there's a ```server-settings.json``` file in the folder ```/tmp/factorio/config```. Modify this to your liking.
 
 Restart the server:
 
-```docker start factorio```
+```
+docker start factorio
+```
 
 Try to connect to the server. Check the logs if it isn't working.
 
