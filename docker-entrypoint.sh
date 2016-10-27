@@ -16,7 +16,7 @@ if [ ! -f /factorio/config/map-gen-settings.json ]; then
   cp /opt/factorio/data/map-gen-settings.example.json /factorio/config/map-gen-settings.json
 fi
 
-if ! find $SAVES -iname \*.zip -mindepth 1 -print | grep -q .; then
+if ! find -L $SAVES -iname \*.zip -mindepth 1 -print | grep -q .; then
   /opt/factorio/bin/x64/factorio \
     --create $SAVES/save.zip \
     --map-gen-settings /opt/factorio/data/map-gen-settings.json
