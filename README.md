@@ -57,7 +57,7 @@ Try to connect to the server. Check the logs if it isn't working.
 
 A new map named `_autosave1.zip` is generated the first time the server is started. The `map-gen-settings.json` file in `/tmp/factorio/config` is used for the map settings. On subsequent runs the newest save is used.
 
-To load an old save stop the server and run the command `touch oldsave.zip`. This resets the date. Then restart the server.
+To load an old save stop the server and run the command `touch oldsave.zip`. This resets the date. Then restart the server. Another option is to delete all saves except one.
 
 To generate a new map stop the server, delete all of the saves and restart the server.
 
