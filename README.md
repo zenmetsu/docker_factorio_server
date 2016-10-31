@@ -71,7 +71,9 @@ Copy mods into the mods folder and restart the server.
 
 Set the RCON password in the `rconpw` file. A random password is generated if `rconpw` doesn't exist.
 
-To "disable" RCON don't expose port 27015. It still runs, but nobody can access it.
+To change the password stop the server, modify `rconpw`, and restart the server.
+
+To "disable" RCON don't expose port 27015, i.e. start the server with `-p 34197:34197/udp` instead of `-P`. RCON still runs, but nobody is able to connect to it.
 
 
 # Container Details
