@@ -22,7 +22,7 @@ fi
 
 if ! find -L $SAVES -iname \*.zip -mindepth 1 -print | grep -q .; then
   /opt/factorio/bin/x64/factorio \
-    --create $SAVES/save.zip \
+    --create $SAVES/_autosave1.zip  \
     --map-gen-settings /opt/factorio/data/map-gen-settings.json
 fi
 
