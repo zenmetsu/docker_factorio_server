@@ -7,7 +7,7 @@ COPY ./factorio.crt /opt/factorio.crt
 ENV VERSION=0.14.17 \
     SHA1=ffb248fabed345aafadb6a8cdef3684312ac240f
 
-RUN apk --update --no-cache add bash curl tini && \
+RUN apk --update --no-cache add bash curl tini pwgen && \
     curl -sSL --cacert /opt/factorio.crt \
         https://www.factorio.com/get-download/$VERSION/headless/linux64 \
         -o /tmp/factorio_headless_x64_$VERSION.tar.gz && \
