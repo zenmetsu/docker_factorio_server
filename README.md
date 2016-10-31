@@ -93,12 +93,12 @@ To keep things simple, the container uses a single volume mounted at `/factorio`
     |-- config
     |   |-- map-gen-settings.json
     |   |-- rconpw
-    |   +-- server-settings.json
+    |   `-- server-settings.json
     |-- mods
-    |   +-- fancymod.zip
-    +-- saves
+    |   `-- fancymod.zip
+    `-- saves
         |-- _autosave1.zip
-        +-- save.zip
+        `-- save.zip
 
 
 ## Ports
