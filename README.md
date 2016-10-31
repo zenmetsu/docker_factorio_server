@@ -67,9 +67,11 @@ To generate a new map stop the server, delete all of the saves and restart the s
 Copy mods into the mods folder and restart the server.
 
 
-## Remote Console
+## RCON
 
-RCON is currently disabled.
+Set the RCON password in the `rconpw` file. A random password is generated if `rconpw` doesn't exist.
+
+To "disable" RCON don't expose port 27015. It still runs, but nobody can access it.
 
 
 # Container Details
@@ -87,8 +89,9 @@ To keep things simple, the container uses a single volume mounted at `/factorio`
 
     factorio
     |-- config
-    |   |-- server-settings.json
-    |   +-- map-gen-settings.json
+    |   |-- map-gen-settings.json
+    |   |-- rconpw
+    |   +-- server-settings.json
     |-- mods
     |   +-- fancymod.zip
     +-- saves
