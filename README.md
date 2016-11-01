@@ -2,7 +2,7 @@
 
 * `0.14.17`, `0.14`, `latest` [(0.14.17/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/0.14.17/0.14/Dockerfile)
 * `0.14.16` [(0.14.16/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/0.14.16/0.14/Dockerfile)
-
+* `0.13.20`, `0.13`, `stable` [(0.13.20/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/0.13.20/0.13/Dockerfile)
 
 # What is Factorio?
 
