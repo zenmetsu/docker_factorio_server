@@ -97,7 +97,7 @@ To keep things simple, the container uses a single volume mounted at `/factorio`
     |-- mods
     |   `-- fancymod.zip
     `-- saves
-        |-- _autosave1.zip
+        `-- _autosave1.zip
 
 
 ## Ports
