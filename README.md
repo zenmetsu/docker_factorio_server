@@ -110,11 +110,11 @@ To keep things simple, the container uses a single volume mounted at `/factorio`
 
 **Server is listed in the in-game server browser, but users can't connect**
 
-If the logs say `Own address is RIGHT IP:WRONG PORT`, then this could be your problem.
+If the logs say `Own address is RIGHT IP:WRONG PORT`, then this could be the problem.
 
-By default, Docker routes outgoing traffic through a proxy. The source UDP port is changed by the proxy so the server list detects the wrong port. See [Incorrect port detected for docker hosted server](https://forums.factorio.com/viewtopic.php?f=49&t=35255).
+By default, Docker routes outbound traffic through a proxy. The proxy changes the source UDP port, so the server list detects the wrong port. See [Incorrect port detected for docker hosted server](https://forums.factorio.com/viewtopic.php?f=49&t=35255).
 
-To fix this problem, start the Docker service with the `--userland-proxy=false` switch to prevent it from using a proxy. This is typically done by appending the switch to the `DOCKER_OPTS` variable or adding it to the end of `ExecStart` in the systemd service definition. The location of these files varies by OS.
+To fix this port problem, start the Docker service with the `--userland-proxy=false` switch. This tells Docker to use iptables rules instead of a proxy. Add the switch to the `DOCKER_OPTS` variable or `ExecStart` in the Docker systemd service definition. The location of these files varies by OS.
 
 
 # Credits
