@@ -110,7 +110,7 @@ To keep things simple, the container uses a single volume mounted at `/factorio`
 
 **Server is listed in the in-game server browser, but users can't connect**
 
-If the logs say `Own address is RIGHT IP:WRONG PORT`, then this applies to you.
+If the logs say `Own address is RIGHT IP:WRONG PORT`, then this could be your problem.
 
 By default, Docker routes outgoing traffic through a proxy. The source UDP port is changed by the proxy so the server list detects the wrong port. See [Incorrect port detected for docker hosted server](https://forums.factorio.com/viewtopic.php?f=49&t=35255).
 
