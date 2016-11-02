@@ -110,7 +110,9 @@ To keep things simple, the container uses a single volume mounted at `/factorio`
 
 **Server is listed in the in-game server browser, but users can't connect**
 
-Run Docker with the `--userland-proxy=false` option. The source UDP port is changed by docker-proxy when the server pings "pingpong" servers. See [Incorrect port detected for docker hosted server](https://forums.factorio.com/viewtopic.php?f=49&t=35255).
+By default, Docker routes outgoing traffic through a proxy. The source UDP port is changed by the proxy so the server list detects the wrong port. See [Incorrect port detected for docker hosted server](https://forums.factorio.com/viewtopic.php?f=49&t=35255).
+
+To fix this problem, start the Docker service with the `--userland-proxy=false` switch to prevent it from using a proxy. This is typically done by appending the switch to the `DOCKER_OPTS` variable or adding it to the end of `ExecStart` in the systemd service definition. The location of these files varies by OS.
 
 
 # Credits
