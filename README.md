@@ -78,9 +78,9 @@ To "disable" RCON don't expose port 27015, i.e. start the server with `-p 34197:
 
 # Container Details
 
-The philosophy is to keep things simple.
+The philosophy is to [keep it simple](http://wiki.c2.com/?KeepItSimple).
 
-* Self-configure to a minimal working state.
+* The server should bootstrap itself.
 * Prefer configuration files over environment variables.
 * Use one volume for data.
 
