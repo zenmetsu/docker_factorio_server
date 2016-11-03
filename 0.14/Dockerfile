@@ -4,8 +4,8 @@ MAINTAINER https://github.com/dtandersen/docker_factorio_server
 
 COPY ./factorio.crt /opt/factorio.crt
 
-ENV VERSION=0.14.17 \
-    SHA1=ffb248fabed345aafadb6a8cdef3684312ac240f
+ENV VERSION=0.14.18 \
+    SHA1=8b919fe1c271ca773754f7644b72a8ddec363ae4
 
 RUN apk --no-cache add curl tini pwgen && \
     curl -sSL --cacert /opt/factorio.crt \
