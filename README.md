@@ -23,14 +23,19 @@ NOTE: This is only the server. The game is available at [factorio.com](https://w
 Run the server to create the necessary folder structure and configuration files. For this example data is stored in `/tmp/factorio`.
 
 ```
-docker run -d -P -v /tmp/factorio:/factorio --name factorio dtandersen/factorio
+docker run -d -p 34197:34197/udp -p 27015:27015/tcp \
+  -v /tmp/factorio:/factorio \
+  --name factorio \
+  --restart=always  \
+  dtandersen/factorio
 ```
 
 For those new to Docker, here is an explanation of the options:
 
 * `-d` - Run as a daemon ("detached").
-* `-P` - Expose all ports.
+* `-p` - Expose all ports.
 * `-v` - Mount `/tmp/factorio` on the local file system to `/factorio` in the container.
+* `--restart` - Restart the server if it crashes and at system start
 * `--name` - Name the container "factorio" (otherwise it has a funny random name).
 
 Check the logs to see what happened:
