@@ -1,1 +1,1 @@
-sudo docker build -t factorio .
+sudo docker build --no-cache -t factorio .
