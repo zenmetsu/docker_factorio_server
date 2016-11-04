@@ -2,14 +2,12 @@ FROM frolvlad/alpine-glibc:alpine-3.4
 
 MAINTAINER https://github.com/dtandersen/docker_factorio_server
 
-COPY ./factorio.crt /opt/factorio.crt
-
 ENV VERSION=0.14.19 \
     SHA1=39d90c91e8835e6e63fe2a35674d56c7c1e8d7d7
 
-RUN apk --no-cache add curl tini pwgen && \
-    curl -sSL --cacert /opt/factorio.crt \
-        https://www.factorio.com/get-download/$VERSION/headless/linux64 \
+RUN mkdir /opt && \
+    apk --no-cache add curl tini pwgen && \
+    curl -sSL https://www.factorio.com/get-download/$VERSION/headless/linux64 \
         -o /tmp/factorio_headless_x64_$VERSION.tar.gz && \
     echo "$SHA1  /tmp/factorio_headless_x64_$VERSION.tar.gz" | sha1sum -c && \
     tar xzf /tmp/factorio_headless_x64_$VERSION.tar.gz --directory /opt && \

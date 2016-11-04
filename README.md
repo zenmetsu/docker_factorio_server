@@ -1,9 +1,7 @@
 # Factorio [![Docker Pulls](https://img.shields.io/docker/pulls/dtandersen/factorio.svg)](https://hub.docker.com/r/dtandersen/factorio/) [![Docker Stars](https://img.shields.io/docker/stars/dtandersen/factorio.svg)](https://hub.docker.com/r/dtandersen/factorio/)
 
-* `0.14.18`, `0.14`, `latest` [(0.14.18/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/0.14.18/0.14/Dockerfile)
-* `0.14.17` [(0.14.17/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/0.14.17/0.14/Dockerfile)
-* `0.14.16` [(0.14.16/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/0.14.16/0.14/Dockerfile)
-* `0.13.20`, `0.13`, `stable` [(0.13.20/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/0.13.20/0.13/Dockerfile)
+* `0.14.18`, `0.14`, `latest`, `stable` [(0.14/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/master/0.14/Dockerfile)
+* `0.13.20`, `0.13`  [(0.13/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/master/0.13/Dockerfile)
 
 # What is Factorio?
 
@@ -23,14 +21,19 @@ NOTE: This is only the server. The game is available at [factorio.com](https://w
 Run the server to create the necessary folder structure and configuration files. For this example data is stored in `/tmp/factorio`.
 
 ```
-docker run -d -P -v /tmp/factorio:/factorio --name factorio dtandersen/factorio
+docker run -d -p 34197:34197/udp -p 27015:27015/tcp \
+  -v /tmp/factorio:/factorio \
+  --name factorio \
+  --restart=always  \
+  dtandersen/factorio
 ```
 
 For those new to Docker, here is an explanation of the options:
 
 * `-d` - Run as a daemon ("detached").
-* `-P` - Expose all ports.
+* `-p` - Expose ports.
 * `-v` - Mount `/tmp/factorio` on the local file system to `/factorio` in the container.
+* `--restart` - Restart the server if it crashes and at system start
 * `--name` - Name the container "factorio" (otherwise it has a funny random name).
 
 Check the logs to see what happened:
@@ -109,13 +112,13 @@ To keep things simple, the container uses a single volume mounted at `/factorio`
 
 ## Troubleshooting
 
-**Server is listed in the in-game server browser, but users can't connect**
+**My server is listed in the server browser, but nobody can connect**
 
-If the logs say `Own address is RIGHT IP:WRONG PORT`, then this could be the problem.
+Check the logs. If there is the line `Own address is RIGHT IP:WRONG PORT`, then this could be caused by the Docker proxy. If the the IP and port is correct it's probably a port forwarding or firewall issue instead.
 
-By default, Docker routes outbound traffic through a proxy. The proxy changes the source UDP port, so the server list detects the wrong port. See [Incorrect port detected for docker hosted server](https://forums.factorio.com/viewtopic.php?f=49&t=35255).
+By default, Docker routes traffic through a proxy. The proxy changes the source UDP port, so the wrong port is detected. See the forum post *[Incorrect port detected for docker hosted server](https://forums.factorio.com/viewtopic.php?f=49&t=35255)* for details.
 
-To fix this port problem, start the Docker service with the `--userland-proxy=false` switch. This tells Docker to use iptables rules instead of a proxy. Add the switch to the `DOCKER_OPTS` variable or `ExecStart` in the Docker systemd service definition. The location of these files varies by OS.
+To fix the incorrect port, start the Docker service with the `--userland-proxy=false` switch. Docker will route traffic with iptables rules instead of a proxy. Add the switch to the `DOCKER_OPTS` environment variable or `ExecStart` in the Docker systemd service definition. The specifics vary by operating system.
 
 
 # Credits
