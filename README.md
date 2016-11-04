@@ -31,7 +31,7 @@ docker run -d -p 34197:34197/udp -p 27015:27015/tcp \
 For those new to Docker, here is an explanation of the options:
 
 * `-d` - Run as a daemon ("detached").
-* `-p` - Expose all ports.
+* `-p` - Expose ports.
 * `-v` - Mount `/tmp/factorio` on the local file system to `/factorio` in the container.
 * `--restart` - Restart the server if it crashes and at system start
 * `--name` - Name the container "factorio" (otherwise it has a funny random name).
