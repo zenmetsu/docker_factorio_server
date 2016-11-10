@@ -1,7 +1,7 @@
 # Factorio [![Docker Pulls](https://img.shields.io/docker/pulls/dtandersen/factorio.svg)](https://hub.docker.com/r/dtandersen/factorio/) [![Docker Stars](https://img.shields.io/docker/stars/dtandersen/factorio.svg)](https://hub.docker.com/r/dtandersen/factorio/)
 
-* `0.14.19`, `0.14`, `latest` [(0.14/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/master/0.14/Dockerfile)
-* `0.14.18`, `stable` [(0.14/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/0.14.18/0.14/Dockerfile)
+* `0.14.20`, `0.14`, `latest` [(0.14/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/master/0.14/Dockerfile)
+* `0.14.19`, `stable` [(0.14/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/0.14.19/0.14/Dockerfile)
 * `0.13.20`, `0.13`  [(0.13/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/master/0.13/Dockerfile)
 
 # What is Factorio?
