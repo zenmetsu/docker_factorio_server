@@ -8,7 +8,8 @@
 
 * `latest` - highest version: may be experimental.
 * `stable` - highest version declared stable.
-* `0.x` - highest version of factorio in that branch: may be experimental.
+* `0.x` - highest version in a branch: may be experimental.
+* `0.x.y` - a specific version.
 
 # What is Factorio?
 
