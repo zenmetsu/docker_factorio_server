@@ -2,8 +2,8 @@ FROM frolvlad/alpine-glibc:alpine-3.4
 
 MAINTAINER https://github.com/dtandersen/docker_factorio_server
 
-ENV VERSION=0.14.21 \
-    SHA1=fc11c0d5b2671e0cf36db7907de6ff617525ede3
+ENV VERSION=0.14.22 \
+    SHA1=c43fa0d750e8347ec466ce165053db3cd3dc2fe0
 
 RUN mkdir /opt && \
     apk --no-cache add curl tini pwgen && \
