@@ -130,7 +130,7 @@ To fix the incorrect port, start the Docker service with the `--userland-proxy=f
 
 **When I run a server on a port besides 34197 nobody can connect from the server browser**
 
-The `PORT` environment variable starts the server on the a different port, .e.g. `-e "PORT=34198"`. This changes the source port on the packets used for port detection. `-p 34198:34197` works fine for private servers, but the server browser detects the wrong port.
+Use the `PORT` environment variable to start the server on the a different port, .e.g. `docker run -e "PORT=34198" ...`. This changes the source port on the packets used for port detection. `-p 34198:34197` works fine for private servers, but the server browser detects the wrong port.
 
 # Credits
 
