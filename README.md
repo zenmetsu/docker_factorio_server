@@ -128,6 +128,9 @@ By default, Docker routes traffic through a proxy. The proxy changes the source 
 
 To fix the incorrect port, start the Docker service with the `--userland-proxy=false` switch. Docker will route traffic with iptables rules instead of a proxy. Add the switch to the `DOCKER_OPTS` environment variable or `ExecStart` in the Docker systemd service definition. The specifics vary by operating system.
 
+**When I run a server on a port besides 34197 nobody can connect from the server browser**
+
+The `PORT` environment variable starts the server on the a different port, .e.g. `-e "PORT=34198"`. This changes the source port on the packets used for port detection. `-p 34198:34197` works fine for private servers, but the server browser detects the wrong port.
 
 # Credits
 
