@@ -7,15 +7,16 @@ ENV PORT=34197 \
     SHA1=e7681725203afeb0645371c695989129076e51bc
 
 RUN mkdir /opt && \
-    apk --no-cache add curl tini pwgen && \
+    apk add --update --no-cache tini pwgen && \
+    apk add --update --no-cache --virtual .build-deps curl && \
     curl -sSL https://www.factorio.com/get-download/$VERSION/headless/linux64 \
         -o /tmp/factorio_headless_x64_$VERSION.tar.xz && \
     echo "$SHA1  /tmp/factorio_headless_x64_$VERSION.tar.xz" | sha1sum -c && \
     tar xf /tmp/factorio_headless_x64_$VERSION.tar.xz --directory /opt && \
     rm /tmp/factorio_headless_x64_$VERSION.tar.xz && \
-    apk del curl && \
     ln -s /factorio/saves /opt/factorio/saves && \
-    ln -s /factorio/mods /opt/factorio/mods
+    ln -s /factorio/mods /opt/factorio/mods && \
+    apk del .build-deps
 
 VOLUME /factorio
 
