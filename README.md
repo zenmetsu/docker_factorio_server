@@ -12,6 +12,7 @@
 * `0.x.y` - a specific version.
 * `0.x-dev` - whatever is in master for that version.
 
+
 # What is Factorio?
 
 [Factorio](https://www.factorio.com) is a game in which you build and maintain factories.
@@ -119,6 +120,11 @@ To keep things simple, the container uses a single volume mounted at `/factorio`
 * `27015/tcp` - RCON (optional).
 
 
+## Environment Variables
+
+* `PORT` - Start the server on an alterate port, .e.g. `docker run -e "PORT=34198"`.
+
+
 ## Troubleshooting
 
 **My server is listed in the server browser, but nobody can connect**
@@ -131,7 +137,8 @@ To fix the incorrect port, start the Docker service with the `--userland-proxy=f
 
 **When I run a server on a port besides 34197 nobody can connect from the server browser**
 
-Use the `PORT` environment variable to start the server on the a different port, .e.g. `docker run -e "PORT=34198" ...`. This changes the source port on the packets used for port detection. `-p 34198:34197` works fine for private servers, but the server browser detects the wrong port.
+Use the `PORT` environment variable to start the server on the a different port, .e.g. `docker run -e "PORT=34198"`. This changes the source port on the packets used for port detection. `-p 34198:34197` works fine for private servers, but the server browser detects the wrong port.
+
 
 # Credits
 
