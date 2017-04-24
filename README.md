@@ -4,12 +4,13 @@
 * `0.14.23`, `0.14`, `stable` [(0.14/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/master/0.14/Dockerfile)
 * `0.13.20`, `0.13`  [(0.13/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/master/0.13/Dockerfile)
 
-*Tag philosophy*
+*Tags*
 
 * `latest` - highest version: may be experimental.
 * `stable` - highest version declared stable.
 * `0.x` - highest version in a branch: may be experimental.
 * `0.x.y` - a specific version.
+* `0.x-dev` - whatever is in master for that version.
 
 # What is Factorio?
 
