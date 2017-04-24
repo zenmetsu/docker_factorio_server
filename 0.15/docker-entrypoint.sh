@@ -28,7 +28,7 @@ if ! find -L $SAVES -iname \*.zip -mindepth 1 -print | grep -q .; then
 fi
 
 exec /opt/factorio/bin/x64/factorio \
-  --port 34197 \
+  --port $PORT \
   --start-server-load-latest \
   --server-settings $CONFIG/server-settings.json \
   --rcon-port 27015 \
