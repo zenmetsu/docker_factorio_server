@@ -67,6 +67,16 @@ docker start factorio
 Try to connect to the server. Check the logs if it isn't working.
 
 
+## Console
+
+It's possible to issue console commands to the server. Start the server in interactive mode with `-it`. Open the console with `docker attach` and then type commands.
+
+	docker run -d -it  \
+        --name factorio \
+        dtandersen/factorio
+
+	docker attach factorio
+
 ## Saves
 
 A new map named `_autosave1.zip` is generated the first time the server is started. The `map-gen-settings.json` file in `/tmp/factorio/config` is used for the map settings. On subsequent runs the newest save is used.
