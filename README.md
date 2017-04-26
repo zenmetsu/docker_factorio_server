@@ -69,13 +69,28 @@ Try to connect to the server. Check the logs if it isn't working.
 
 ## Console
 
-It's possible to issue console commands to the server. Start the server in interactive mode with `-it`. Open the console with `docker attach` and then type commands.
+To issue console commands to the server, start the server in interactive mode with `-it`. Open the console with `docker attach` and then type commands.
 
 	docker run -d -it  \
         --name factorio \
         dtandersen/factorio
-
 	docker attach factorio
+
+
+## Upgrading
+
+Before upgrading backup the save. It's easy to make a save in the client.
+
+Ensure `-v` was used to run the server so the save is outside of the Docker container. The `docker rm` command completely destroys the container, which includes the save if it isn't stored in an data volume.
+
+Delete the container and refresh the image:
+
+	docker stop factorio
+	docker rm factorio
+	docker pull dtandersen/factorio
+
+Now run the server as before. In about a minute the new version of Factorio should be up and running, complete with saves and config!
+
 
 ## Saves
 
@@ -95,9 +110,9 @@ Copy mods into the mods folder and restart the server.
 
 Set the RCON password in the `rconpw` file. A random password is generated if `rconpw` doesn't exist.
 
-To change the password stop the server, modify `rconpw`, and restart the server.
+To change the password, stop the server, modify `rconpw`, and restart the server.
 
-To "disable" RCON don't expose port 27015, i.e. start the server with `-p 34197:34197/udp` instead of `-P`. RCON still runs, but nobody is able to connect to it.
+To "disable" RCON don't expose port 27015, i.e. start the server without `-p 27015:27015/tcp`. RCON is still running, but nobody can to connect to it.
 
 
 # Container Details
