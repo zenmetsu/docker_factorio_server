@@ -115,6 +115,15 @@ To change the password, stop the server, modify `rconpw`, and restart the server
 To "disable" RCON don't expose port 27015, i.e. start the server without `-p 27015:27015/tcp`. RCON is still running, but nobody can to connect to it.
 
 
+## Whitelisting (0.15.3+)
+
+Create file `config/server-whitelist.json` and add the whitelisted users.
+
+    [
+		"you",
+		"friend"
+	]
+
 # Container Details
 
 The philosophy is to [keep it simple](http://wiki.c2.com/?KeepItSimple).
@@ -147,7 +156,7 @@ To keep things simple, the container uses a single volume mounted at `/factorio`
 
 ## Environment Variables
 
-* `PORT` - Start the server on an alterate port, .e.g. `docker run -e "PORT=34198"`.
+* `PORT` (0.15+) - Start the server on an alterate port, .e.g. `docker run -e "PORT=34198"`.
 
 
 ## Troubleshooting
@@ -165,9 +174,10 @@ To fix the incorrect port, start the Docker service with the `--userland-proxy=f
 Use the `PORT` environment variable to start the server on the a different port, .e.g. `docker run -e "PORT=34198"`. This changes the source port on the packets used for port detection. `-p 34198:34197` works fine for private servers, but the server browser detects the wrong port.
 
 
-# Credits
+# Contributors
 
-Ideas borrowed from:
-
-* [Zopanix](https://github.com/zopanix/docker_factorio_server)
-* [Rfvgyhn](https://github.com/Rfvgyhn/docker-factorio)
+* [dtandersen](https://github.com/dtandersen/docker_factorio_server) - Maintainer
+* [Zopanix](https://github.com/zopanix/docker_factorio_server) - Originator
+* [Rfvgyhn](https://github.com/Rfvgyhn/docker-factorio) - rconpw
+* [gnomus](https://github.com/gnomus/docker_factorio_server)) - white listing
+* [jaredledvina](https://github.com/jaredledvina/docker_factorio_server) - 0.14.22 update
