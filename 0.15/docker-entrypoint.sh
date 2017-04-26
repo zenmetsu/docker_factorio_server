@@ -21,6 +21,10 @@ if [ ! -f $CONFIG/map-gen-settings.json ]; then
   cp /opt/factorio/data/map-gen-settings.example.json $CONFIG/map-gen-settings.json
 fi
 
+if [ ! -f $CONFIG/server-whitelist.json ]; then
+  cp /opt/factorio/data/server-whitelist.example.json $CONFIG/server-whitelist.json
+fi
+
 if ! find -L $SAVES -iname \*.zip -mindepth 1 -print | grep -q .; then
   /opt/factorio/bin/x64/factorio \
     --create $SAVES/_autosave1.zip  \
@@ -31,5 +35,6 @@ exec /opt/factorio/bin/x64/factorio \
   --port $PORT \
   --start-server-load-latest \
   --server-settings $CONFIG/server-settings.json \
+  --server-whitelist $CONFIG/server-whitelist.json \
   --rcon-port 27015 \
   --rcon-password "$(cat $CONFIG/rconpw)"
