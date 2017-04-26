@@ -4,7 +4,7 @@
 * `0.14.23`, `0.14`, `stable` [(0.14/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/master/0.14/Dockerfile)
 * `0.13.20`, `0.13`  [(0.13/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/master/0.13/Dockerfile)
 
-*Tags*
+*Tag descriptions*
 
 * `latest` - highest version: may be experimental.
 * `stable` - highest version declared stable.
