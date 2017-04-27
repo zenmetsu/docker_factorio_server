@@ -141,7 +141,8 @@ To keep things simple, the container uses a single volume mounted at `/factorio`
     |-- config
     |   |-- map-gen-settings.json
     |   |-- rconpw
-    |   `-- server-settings.json
+    |   |-- server-settings.json
+    |   `-- server-whitelist.json
     |-- mods
     |   `-- fancymod.zip
     `-- saves
@@ -150,7 +151,7 @@ To keep things simple, the container uses a single volume mounted at `/factorio`
 
 ## Ports
 
-* `34197/udp` - Factorio clients (required).
+* `34197/udp` - Game server (required).
 * `27015/tcp` - RCON (optional).
 
 
