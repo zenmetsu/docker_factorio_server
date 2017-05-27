@@ -3,8 +3,8 @@ FROM frolvlad/alpine-glibc:alpine-3.5
 MAINTAINER https://github.com/dtandersen/docker_factorio_server
 
 ENV PORT=34197 \
-    VERSION=0.15.15 \
-    SHA1=b3b40bb0c28a39be3b34681521c0ccdd2fba8e6b
+    VERSION=0.15.16 \
+    SHA1=6022d5f7e84956301659942b40a7c7afb94d099c
 
 RUN mkdir /opt && \
     apk add --update --no-cache tini pwgen && \
