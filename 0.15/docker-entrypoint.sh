@@ -32,12 +32,16 @@ if ! find -L $SAVES -iname \*.zip -mindepth 1 -print | grep -q .; then
     --map-settings $CONFIG/map-settings.json
 fi
 
-exec /opt/factorio/bin/x64/factorio \
-  --port $PORT \
-  --start-server-load-latest \
-  --server-settings $CONFIG/server-settings.json \
-  --server-whitelist $CONFIG/server-whitelist.json \
-  --server-banlist $CONFIG/server-banlist.json \
-  --rcon-port 27015 \
-  --rcon-password "$(cat $CONFIG/rconpw)" \
-  --server-id /factorio/config/server-id.json
+if [ $# -eq 0 ]; then
+  exec /opt/factorio/bin/x64/factorio \
+    --port $PORT \
+    --start-server-load-latest \
+    --server-settings $CONFIG/server-settings.json \
+    --server-whitelist $CONFIG/server-whitelist.json \
+    --server-banlist $CONFIG/server-banlist.json \
+    --rcon-port 27015 \
+    --rcon-password "$(cat $CONFIG/rconpw)" \
+    --server-id /factorio/config/server-id.json
+else
+  exec /opt/factorio/bin/x64/factorio "$@"
+fi
