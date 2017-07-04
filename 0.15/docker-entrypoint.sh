@@ -40,5 +40,4 @@ exec /opt/factorio/bin/x64/factorio \
   --server-banlist $CONFIG/server-banlist.json \
   --rcon-port 27015 \
   --rcon-password "$(cat $CONFIG/rconpw)" \
-  --server-id /factorio/config/server-id.json \
-  --allow-commands admins-only
+  --server-id /factorio/config/server-id.json
