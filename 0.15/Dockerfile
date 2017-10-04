@@ -3,7 +3,7 @@ FROM frolvlad/alpine-glibc:alpine-3.6
 MAINTAINER https://github.com/zenmetsu/docker_factorio_server
 
 ENV PORT=34197 \
-    VERSION=0.15.31 \
+    VERSION=0.15.34 \
     SHA1=7bc20a702710672ff4a570948ffc06b6f7d4666c
 
 RUN mkdir /opt && \
